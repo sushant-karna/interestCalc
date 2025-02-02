@@ -17,16 +17,16 @@ public class MainActivity extends AppCompatActivity {
     private  Float selectedValue;
     private Spinner spinner;
 
-    private Float loan= 0.0F;
-    private Float down= 0.0F;
-    private Float intrest=0.0F;
+   // private Float loan= 0.0F;
+    //private Float down= 0.0F;
+   // private Float intrest=0.0F;
 
-    private Float period=0.0F;
-    private float cPeriod=0.0F;
-    private Float remaining=0.0F;
-    private Float iEffective=0.0F;
+    //private Float period=0.0F;
+   // private float cPeriod=0.0F;
+    //private Float remaining=0.0F;
+    //private Float iEffective=0.0F;
 
-    private Float fValue= 0.0F;
+    //private Float fValue= 0.0F;
 
 
     private ArrayList<SpinnerItem> items;
@@ -126,10 +126,10 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "field value can't be null", Toast.LENGTH_LONG).show();
         }
         else {
-            loan = Float.parseFloat(b);
-            down= Float.parseFloat(d);
-            intrest= Float.parseFloat(d);
-            period=Float.parseFloat(h);
+           Float loan = Float.parseFloat(b);
+           Float down= Float.parseFloat(d);
+           Float interest= Float.parseFloat(f);
+            Float period=Float.parseFloat(h);
 
             if(down>=loan)
             {
@@ -139,14 +139,19 @@ public class MainActivity extends AppCompatActivity {
             }
             else
             {
-                remaining=loan-down;
-                cPeriod=365;
-                    iEffective= (float) Math.pow((1+((intrest*0.01)/selectedValue)),selectedValue);
+                Float remaining=loan-down;
 
-                    fValue= (float) Math.pow((1+iEffective),period)*remaining;
+                    Float iEffective= (float) Math.pow((1+((interest*0.01)/selectedValue)),selectedValue)-1;
+
+                    Float fValue= (float) ((float) remaining*( Math.pow((1+iEffective),period)));
 
                     String amount= fValue.toString();
                 ((TextView) findViewById(R.id.result)).setText(amount);
+
+//                String k= iEffective.toString();
+//                Log.d("klick", k);
+
+
 
 //                if(selectedValue==100)
 //                {
